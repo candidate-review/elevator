@@ -54,7 +54,7 @@ class Elevator():
             self.requests.append([from_floor, to_floor])
             return (from_floor, to_floor)
 
-        return False
+        return []
 
     def move(self, floor, opts={}):
         elevator_id = opts.get('id')
