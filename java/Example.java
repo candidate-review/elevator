@@ -21,20 +21,15 @@ class Example {
         return xmlRpcClient;
     }
 
-    // Create an Array Param
-    public static Object[] aParam(Object obj) {
-        return new Object[] { obj };
-    }
-
     public static void main(String args[]) {
         try {
             XmlRpcClient client = getXmlRpcClient("http://localhost:8000");
-            client.execute("test_mode", aParam(
-                Arrays.asList(new Integer[] {4, 8}, new Integer[] {9, 3})
-            ));
+            client.execute("test_mode", new Object[]{
+                Arrays.asList(new Integer[]{4, 8}, new Integer[]{9, 3})
+            });
 
             System.out.println("Someone on floor #4 requested to go to floor #8");
-            client.execute("service", aParam(new Integer[]{4, 8}));
+            client.execute("service", new Object[]{ new Integer[]{4, 8} });
             client.execute("move", new Integer[]{2});
             client.execute("move", new Integer[]{3});
             client.execute("move", new Integer[]{4});
@@ -46,7 +41,7 @@ class Example {
             client.execute("dropoff", new Object[0]); // << drop off on 8
 
             System.out.println("Someone on floor #9 requested to go to floor #3");
-            client.execute("service", aParam(new Integer[]{9, 3}));
+            client.execute("service", new Object[]{ new Integer[]{9, 3} });
             client.execute("move", new Integer[]{9});
             client.execute("pickup", new Object[0]); // << pick up on 9
             client.execute("move", new Integer[]{8});

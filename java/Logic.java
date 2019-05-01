@@ -23,11 +23,6 @@ class Logic {
         return xmlRpcClient;
     }
 
-    // Create an Array Param
-    public static Object[] aParam(Object obj) {
-        return new Object[] { obj };
-    }
-
     public static void main(String args[]) {
         try {
             ArrayList<ArrayList<Integer>> floor_requests = new ArrayList<ArrayList<Integer>>();
