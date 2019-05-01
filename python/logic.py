@@ -9,9 +9,6 @@ elevator.reset()
 floor_requests = []
 
 while True:
-    # seconds = elevator.tick()
-    # print("Tick %i" % seconds)
-
     req = elevator.check_for_elevator_request()
     if req:
         print("Someone on floor #%i requested to go to floor #%i" % (req[0], req[1]))
