@@ -2,5 +2,5 @@
 
 ## Setup
 ```bash
-go get github.com/nilshell/xmlrpc
+go get github.com/kolo/xmlrpc
 ```

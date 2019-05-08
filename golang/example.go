@@ -2,18 +2,18 @@ package main
 
 import (
 	"fmt"
-	"github.com/nilshell/xmlrpc"
+	"github.com/kolo/xmlrpc"
 )
 
 func main() {
-	client, _ := xmlrpc.NewClient("http://localhost:8000", nil)
-	result := []interface{}{}
-	client.Call("test_mode", [2][2]int{{4, 8}, {9, 3}}, &result)
+	var result [][]int
+	var boolRes bool
 
-	var boolRes interface{}
+	client, _ := xmlrpc.NewClient("http://localhost:8000", nil)
+	client.Call("test_mode", [][]int{{4, 8}, {9, 3}}, &result)
 
 	fmt.Printf("Someone on floor #4 requested to go to floor #8\n")
-	client.Call("service", [2]int{4, 8}, &boolRes)
+	client.Call("service", []int{4, 8}, &boolRes)
 	client.Call("move", 2, &boolRes)
 	client.Call("move", 3, &boolRes)
 	client.Call("move", 4, &boolRes)
@@ -25,7 +25,7 @@ func main() {
 	client.Call("dropoff", nil, &boolRes)
 
 	fmt.Printf("Someone on floor #9 requested to go to floor #3\n")
-	client.Call("service", [2]int{9, 3}, &boolRes)
+	client.Call("service", []int{9, 3}, &boolRes)
 	client.Call("move", 9, &boolRes)
 	client.Call("pickup", nil, &boolRes)
 	client.Call("move", 8, &boolRes)
@@ -36,6 +36,6 @@ func main() {
 	client.Call("move", 3, &boolRes)
 	client.Call("dropoff", nil, &boolRes)
 
-	// Invalid jump fro floor 3 to 1
+	// Invalid jump from floor 3 to 1
 	client.Call("move", 1, &boolRes)
 }
