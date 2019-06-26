@@ -95,3 +95,4 @@ Forces the elevator into test mode where the request queue can be specified.
 
 #### Returns
 The list of requests sent
+
