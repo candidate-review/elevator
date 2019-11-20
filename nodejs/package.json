@@ -1,0 +1,12 @@
+{
+  "name": "elevator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "logic.js",
+  "scripts": {
+    "logic": "node logic.js",
+    "example": "node example.js",
+    "example2": "node example2.js"
+  },
+  "author": ""
+}
