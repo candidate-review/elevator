@@ -1,9 +1,13 @@
 import time
-# import xmlrpclib # Python 2
-from xmlrpc import client # Python 3
+from sys import version_info
 
-#elevator = xmlrpclib.ServerProxy('http://localhost:8000') # Python 2
-elevator = client.ServerProxy('http://localhost:8000') # Python 3
+if version_info.major == 2:
+  import xmlrpclib # Python 2
+  elevator = xmlrpclib.ServerProxy('http://localhost:8000') # Python 2
+else:
+  from xmlrpc import client # Python 3
+  elevator = client.ServerProxy('http://localhost:8000') # Python 3
+
 elevator.reset()
 
 floor_requests = []

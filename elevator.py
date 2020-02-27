@@ -2,9 +2,12 @@ from collections import defaultdict
 from platform import system as system_name
 from os import system as system_call
 from random import randint
+from sys import version_info
 
-# from SimpleXMLRPCServer import SimpleXMLRPCServer # Python 2
-from xmlrpc.server import SimpleXMLRPCServer # Python 3
+if version_info.major == 2:
+    from SimpleXMLRPCServer import SimpleXMLRPCServer # Python 2
+else:
+    from xmlrpc.server import SimpleXMLRPCServer # Python 3
 
 def print_warn(string, elevator_id=None):
     elevator_id_str = '' if not elevator_id else '(%s) ' % elevator_id
@@ -128,9 +131,9 @@ class Elevator():
         system_call(command)
 
     def reset(self):
-        self.current_floor = defaultdict(lambda : 1) 
+        self.current_floor = defaultdict(lambda : 1)
         self.requests = []
-        self.active = defaultdict(lambda : []) 
+        self.active = defaultdict(lambda : [])
 
         self.clear_screen()
         print_status('Elevator is ready for service!')
@@ -141,7 +144,7 @@ class Elevator():
         self.reset()
 
         self.requests = queue
-        
+
         print_status('Entering test mode')
         print_status('Request queue: ' + str(queue))
         print('')
